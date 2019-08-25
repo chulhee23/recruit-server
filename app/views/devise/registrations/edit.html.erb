@@ -14,17 +14,17 @@
 
             <div class="form-group">
               
-              <%= f.label :email %><br />
+              <%= f.label :email %>
               <%= f.email_field :email, class: "form-control", autofocus: true, readonly: true %>
             </div>
             
             <div class="form-group">
-              <%= f.label :name, "이름" %><br />
+              <%= f.label :name, "이름" %>
               <%= f.text_field :name, class: "form-control" %>
             </div>
             
             <div class="form-group">
-              <%= f.label :phone, "전화번호" %><br />
+              <%= f.label :phone, "전화번호" %>
               <%= f.text_field :phone, class: "form-control" %>
             </div>
             
@@ -33,7 +33,7 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :password %> <i>(기존 비밀번호를 유지할 경우 빈 칸으로 남겨주세요)</i><br />
+              <%= f.label :password %> <i>(기존 비밀번호를 유지할 경우 빈 칸으로 남겨주세요)</i>
               <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
               <% if @minimum_password_length %>
                 <em><%= @minimum_password_length %>글자 이상 입력하세요</em>
@@ -41,12 +41,12 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :password_confirmation %><br />
+              <%= f.label :password_confirmation %>
               <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :current_password %> <i>(정보를 수정하시려면 현재 비밀번호를 입력해주세요)</i><br />
+              <%= f.label :current_password %> <i>(정보를 수정하시려면 현재 비밀번호를 입력해주세요)</i>
               <%= f.password_field :current_password, class: "form-control", autocomplete: "current-password" %>
             </div>
 
