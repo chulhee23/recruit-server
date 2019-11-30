@@ -31,7 +31,11 @@
                       <% end %>
                     </a>
                     
-                    <h4 class="mb-0 text-white text-shadow-dark"><%= current_user&.team.name %></h4>
+                    <h4 class="mb-0 text-white text-shadow-dark">
+                      <% if current_user.team %>
+                        <%= link_to "#{current_user&.team.name}", team_path(current_user.team), class: "text-white" %>  
+                      <% end %>
+                    </h4>
                     <h6 class="mb-0 text-white text-shadow-dark"><%= current_user.name %></h6>
                     <span class="font-size-sm text-white text-shadow-dark"><%= current_user.email %></span>
                     

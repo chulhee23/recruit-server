@@ -21,7 +21,7 @@ class QuestionSheetsController < ApplicationController
 
 
   def update
-    @question_sheet.update_attributes(question_sheet_params)
+    @question_sheet.update_attributes!(question_sheet_params)
   end
 
   def destroy
@@ -38,7 +38,11 @@ class QuestionSheetsController < ApplicationController
     end
 
     def question_sheet_params
-      params.require(:question_sheet).permit(:title, :content).merge(start_date: params[:date].split(" - ")[0], end_date: params[:date].split(" - ")[1])
+      start_date = params[:date].split(" - ")[0]
+      start_date = Time.strptime(start_date, "%m/%d/%Y %H:%M")
+      end_date = params[:date].split(" - ")[1]
+      end_date = Time.strptime(end_date, "%m/%d/%Y %H:%M")
+      params.require(:question_sheet).permit(:title, :content).merge(start_date: start_date, end_date: end_date)
     end
     
     def position_params

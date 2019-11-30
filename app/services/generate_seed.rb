@@ -10,6 +10,7 @@ class GenerateSeed
        u = User.create!(email: "test#{i}@test.com", password: "asdasd", password_confirmation: "asdasd", name: "유저-#{i}")
        t = Team.create!(name: "#{i}번째 팀", description: "#{i}번째 설명입니다.")
        TeamUser.create!(team: t, user: u, role: :captain)
+       u.update!(team: t)
      end
   end
 

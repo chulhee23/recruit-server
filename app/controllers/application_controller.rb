@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       
       apply_teams.each do |team_id|
         team = Team.find(team_id)
-        @my_apply_teams_hash[team.name] = team_path(team_id)
+        @my_apply_teams_hash[team.name] = team
       end
       @teams_hash = {
         '나의 소속 팀': @my_teams_hash,

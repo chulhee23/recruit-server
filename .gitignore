@@ -93,3 +93,5 @@ yarn-debug.log*
 !/storage/.keep
 /public/doodle/*
 /public/limitless/*
+
+.DS_Store

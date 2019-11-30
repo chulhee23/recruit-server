@@ -11,6 +11,7 @@ class AnswerSheetsController < ApplicationController
   end
 
   def create
+    byebug
     answer_sheet = @question_sheet.answer_sheets.create(set_params.merge({user: current_user}))
     redirect_to [@question_sheet, answer_sheet]
   end

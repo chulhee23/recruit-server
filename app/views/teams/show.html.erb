@@ -15,6 +15,23 @@
   <% else %>
     <%= link_to "#{@apply_team_user ? '신청 취소하기' : '신청하기' }","", class: "btn btn-lg #{@apply_team_user ? "btn-danger" : "btn-primary" } mt-5 w-50 mx-auto", id: "apply-btn" %>
   <% end %>
+  
+  <hr>
+  <h4>
+    모집 질문 시트 관리
+    <%= link_to '모집 질문 시트 생성', new_question_sheet_path, class: "ml-2 btn btn-outline-primary" %>
+  </h4>
+	<hr class="mt-0">
+  <% @question_sheets.each do |question_sheet| %>
+    <%= link_to edit_question_sheet_path(question_sheet) do %>
+      <blockquote class="blockquote blockquote-bordered py-2 pl-3 mb-0">
+    		<p class="mb-1"><%= question_sheet.title %></p>
+    		<footer class="blockquote-footer">모집 기간 : <%= date_time question_sheet.start_date %> ~ <%= date_time question_sheet.end_date %></footer>
+    	</blockquote>
+    <% end %>
+  <% end %>
+  
+
 </div>
 
 <% if current_user.manager?(@team) %>
@@ -57,7 +74,7 @@
                           <% end %>
                           
                         <% end %>
-                        <%= link_to '삭제', team_user_path, method: :delete, class: "role-button dropdown-item", style: "color: red;", data: {confirm: "정말로 팀원을 삭제하시겠습니까?"} %>
+                        <%= link_to '삭제', team_user_path, method: :delete, class: "role-button dropdown-item text-danger", data: {confirm: "정말로 팀원을 삭제하시겠습니까?"} %>
                     </div>
                   <% end %>
                 <% else %>
