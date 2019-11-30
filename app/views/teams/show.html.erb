@@ -13,7 +13,7 @@
   <% if current_user.my_team?(@team) %>
     <span class="btn btn-outline-primary my-5">당신은 이 팀에 소속되어 있습니다.</span>
   <% else %>
-    <%= link_to "#{@apply_team_user ? '신청 취소하기' : '신청하기' }","", class: "btn btn-lg #{@apply_team_user ? "btn-danger" : "btn-primary" } mt-5 w-50 mx-auto", id: "apply-btn" %>
+    <%= link_to "#{@apply_team_user ? '신청 취소하기' : '신청하기' }","#", class: "btn btn-lg #{@apply_team_user ? "btn-danger" : "btn-primary" } mt-5 w-50 mx-auto", id: "apply-btn" %>
   <% end %>
   
   <hr>
@@ -177,22 +177,29 @@
         url: "<%= toggle_team_users_path(team_id: @team.id) %>"
       }).done(function(data) {
         if(data.is_new){
-          new PNotify({
+          let notify = new PNotify({
             // title: 'Danger notice',
             text: "<%= @team.name %> 팀에 신청했습니다.",
             // icon: 'icon-blocked',
             type: 'success'
-        });
+          });
+          setTimeout(function(){
+            notify.animateOut()
+          }, 1500)
+          
           $("#apply-btn").html("신청 취소하기");
           $("#apply-btn").removeClass("btn-primary");
           $("#apply-btn").addClass("btn-danger");
         }else{
-          new PNotify({
+          let notify = new PNotify({
             // title: 'Danger notice',
             text: "<%= @team.name %> 팀에 신청을 취소했습니다.",
             // icon: 'icon-blocked',
             type: 'error'
           });
+          setTimeout(function(){
+            notify.animateOut()
+          }, 1500)
           $("#apply-btn").removeClass("btn-danger");
           $("#apply-btn").addClass("btn-primary");
           $("#apply-btn").html("신청하기");
